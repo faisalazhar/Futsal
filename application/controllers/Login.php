@@ -20,9 +20,9 @@ class Login extends CI_Controller {
 
 
 		if ($login > 0) {
-			echo "Login sukses !";
+			redirect(base_url('admin'));
 		} else {
-			echo "Login gagal !";
+			redirect(base_url('login'));
 		}
 	}
 
