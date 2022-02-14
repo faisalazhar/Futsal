@@ -22,6 +22,8 @@ class Login extends CI_Controller {
 		if ($login > 0) {
 			redirect(base_url('admin'));
 		} else {
+			// ini gunanye buat munculin alert ketika login gagal by defa
+			$this->session->set_flashdata('msg', 'Username dan Password tidak ditemukan !');
 			redirect(base_url('login'));
 		}
 	}

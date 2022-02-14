@@ -8,4 +8,17 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/index');
 	}
 
+	public function lapangan(){
+
+		// ini buat ambil data lapangan dari database
+		$data['lapangan'] = $this->db->query("SELECT * FROM tb_lapangan")->result();
+
+		// ini buat nampilin halaman manajemen lapangan
+
+		$this->load->view('admin/head');
+		$this->load->view('admin/sidebar');
+		$this->load->view('admin/lapangan',$data);
+		$this->load->view('admin/foot');
+	}
+
 }

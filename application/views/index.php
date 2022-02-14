@@ -13,6 +13,14 @@
   <body>
     <div class="container" >
 		<div class="mx-auto" style="width: 50%;">
+			<?php if($this->session->flashdata('msg')){ ?>
+				<div class="alert alert-warning alert-dismissible fade show mt-5" role="alert">
+				  <?= $this->session->flashdata('msg') ?>
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+			<?php } ?>
 			<div class="card mt-5 bg-primary p-5" style="color:white">
 				<form action="<?= base_url('login/admin') ?>" method="post">
 					<div class="form-group">
