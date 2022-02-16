@@ -23,6 +23,23 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/foot');
 	}
 
+	public function tambah_lapangan(){
+		$this->load->model('Model_lapangan');
+		$nama 		= $this->input->post('nama');
+		$status 	= $this->input->post('status');
+
+		$data = array(
+			'nama' => $nama,
+			'status' => $status
+		);
+
+		$this->Model_lapangan->tambah_lapangan($data);
+
+		echo "tambah berhasil !!";
+		
+
+	}
+
 	public function hapus_lapangan($id){
 
 		$this->load->model('Model_lapangan');

@@ -10,6 +10,11 @@ class Model_lapangan extends CI_Model {
 		$this->db->query("DELETE FROM tb_lapangan where id = $id");
 	}
 
+	function tambah_lapangan($data){
+		$this->db->insert('tb_lapangan', $data);
+		
+	}
+
 
 
 }
