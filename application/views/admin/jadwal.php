@@ -1,6 +1,6 @@
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
-	    <h6 class="m-0 font-weight-bold text-primary">Lapangan</h6>
+	    <h6 class="m-0 font-weight-bold text-primary">Jadwal</h6>
 	</div>
 	<?php if($this->session->flashdata('msg')){ ?>
 		<div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
@@ -16,7 +16,7 @@
 				<thead>
 					<tr>
 						<th style="width:10px">No.</th>
-						<th>Lapangan</th>
+						<th>Jadwal</th>
 						<th style="width:20%">Status</th>
 						<th style="width:20%">Aksi</th>
 					</tr>
@@ -24,10 +24,10 @@
 				<tbody>
 					<?php 
 					$no = 1;
-					foreach ($lapangan as $d) { ?>
+					foreach ($jadwal as $d) { ?>
 					<tr>
 						<td><?= $no++ ?></td>
-						<td><?= $d->nama ?></td>
+						<td><?= $d->jadwal ?></td>
 						<td>
 							<?php
 								if ($d->status == 1) {
@@ -39,7 +39,7 @@
 						</td>
 						<td>
 							<a class="btn btn-primary" href="">Edit</a>
-							<a class="btn btn-danger" href="<?= base_url('admin/hapus_lapangan/').$d->id ?>">Hapus</a>
+							<a class="btn btn-danger" href="<?= base_url('admin/hapus_jadwal/').$d->id ?>">Hapus</a>
 						</td>
 					</tr>
 					<?php } ?>

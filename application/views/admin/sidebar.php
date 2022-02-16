@@ -26,6 +26,12 @@
         </a>
     </li>
 
+    <li class="nav-item active">
+        <a class="nav-link" href="<?= base_url('admin/jadwal') ?>">
+            <i class="fas fa-clock"></i>
+            <span>jadwal</span>
+        </a>
+    </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

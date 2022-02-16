@@ -33,4 +33,28 @@ class Admin extends CI_Controller {
 		redirect('/admin/lapangan/');
 	}
 
+	public function jadwal(){
+		// ini buat memuat model
+		$this->load->model('Model_jadwal');
+
+		// ini buat memanggil fungsi lihat yang ada di model
+		$data['jadwal'] = $this->Model_jadwal->lihat();
+
+		// ini buat nampilin halaman manajemen lapangan
+
+		$this->load->view('admin/head');
+		$this->load->view('admin/sidebar');
+		$this->load->view('admin/jadwal',$data);
+		$this->load->view('admin/foot');
+	}
+
+	public function hapus_jadwal($id){
+
+		$this->load->model('Model_jadwal');
+
+		// ini buat memanggil fungsi hapus yang ada di model
+		$this->Model_jadwal->hapus($id);
+		$this->session->set_flashdata('msg', 'Data berhasil dihapus !');
+		redirect('/admin/jadwal/');
+	}
 }
