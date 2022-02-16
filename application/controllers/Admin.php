@@ -34,10 +34,9 @@ class Admin extends CI_Controller {
 		);
 
 		$this->Model_lapangan->tambah_lapangan($data);
-
-		echo "tambah berhasil !!";
+		$this->session->set_flashdata('msg', 'Data berhasil ditambah !');
+		redirect('/admin/lapangan/');
 		
-
 	}
 
 	public function hapus_lapangan($id){
@@ -72,6 +71,21 @@ class Admin extends CI_Controller {
 		// ini buat memanggil fungsi hapus yang ada di model
 		$this->Model_jadwal->hapus($id);
 		$this->session->set_flashdata('msg', 'Data berhasil dihapus !');
+		redirect('/admin/jadwal/');
+	}
+
+	public function tambah_jadwal(){
+		$this->load->model('Model_jadwal');
+		$jadwal 	= $this->input->post('jadwal');
+		$status 	= $this->input->post('status');
+
+		$data = array(
+			'jadwal' => $jadwal,
+			'status' => $status
+		);
+
+		$this->Model_jadwal->tambah_jadwal($data);
+		$this->session->set_flashdata('msg', 'Jadwal berhasil ditambah !');
 		redirect('/admin/jadwal/');
 	}
 }

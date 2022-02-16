@@ -1,7 +1,10 @@
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
-	    <h6 class="m-0 font-weight-bold text-primary">Jadwal</h6>
-	</div>
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Jadwal Sparing</h1>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#tambahdata"><i
+                    class="fas fa-plus fa-sm"></i> Tambah</a>
+        </div>
 	<?php if($this->session->flashdata('msg')){ ?>
 		<div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
 		  <?= $this->session->flashdata('msg') ?>
@@ -10,6 +13,41 @@
 		  </button>
 		</div>
 	<?php } ?>
+
+    <!-- start untuk modal tambah data -->
+	<div class="modal fade" id="tambahdata" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<form action="<?= base_url('admin/tambah_jadwal') ?>" method="post">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Tambah Jadwal</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>Jadwal</label>
+							<input class="form-control" type="text" name="jadwal" required>
+						</div>
+						<div class="form-group">
+							<label>Status</label>
+							<select name="status" class="form-control">
+								<option value="1">Aktif</option>
+								<option value="2">Tidak Aktif</option>
+							</select>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+						<input type="Submit" class="btn btn-primary" value="Simpan">
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!-- end untuk modal tambah data -->
+
 	<div class="card-body">
 	    <div class="table-responsive">
 	        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
