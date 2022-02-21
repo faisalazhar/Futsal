@@ -24,6 +24,25 @@ class Admin extends CI_Controller {
 	}
 
 	public function tambah_lapangan(){
+		$this->load->view('admin/head');
+		$this->load->view('admin/sidebar');
+		$this->load->view('admin/form_tambah_lapangan');
+		$this->load->view('admin/foot');
+	}
+
+	public function edit_lapangan($id){
+		$this->load->model('Model_lapangan');
+
+		// ambil satu baris data lapangan yang ingin diedit 
+		$data['lapangan'] = $this->Model_lapangan->lihat_by_id($id);
+
+		$this->load->view('admin/head');
+		$this->load->view('admin/sidebar');
+		$this->load->view('admin/form_edit_lapangan',$data);
+		$this->load->view('admin/foot');
+	}
+
+	public function simpan_lapangan(){
 		$this->load->model('Model_lapangan');
 		$nama 		= $this->input->post('nama');
 		$status 	= $this->input->post('status');
@@ -36,7 +55,22 @@ class Admin extends CI_Controller {
 		$this->Model_lapangan->tambah_lapangan($data);
 		$this->session->set_flashdata('msg', 'Data berhasil ditambah !');
 		redirect('/admin/lapangan/');
-		
+	}
+
+	public function simpan_edit_lapangan(){
+		$this->load->model('Model_lapangan');
+		$nama 		= $this->input->post('nama');
+		$status 	= $this->input->post('status');
+		$id 		= $this->input->post('id');
+
+		$data = array(
+			'nama' => $nama,
+			'status' => $status
+		);
+
+		$this->Model_lapangan->edit_lapangan($id,$data);
+		$this->session->set_flashdata('msg', 'Data berhasil dupdate !');
+		redirect('/admin/lapangan/');
 	}
 
 	public function hapus_lapangan($id){
