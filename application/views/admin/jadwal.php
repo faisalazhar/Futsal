@@ -2,7 +2,7 @@
 	<div class="card-header py-3">
 		<div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Jadwal Sparing</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#tambahdata"><i
+            <a href="<?= base_url('admin/tambah_jadwal') ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                     class="fas fa-plus fa-sm"></i> Tambah</a>
         </div>
 	<?php if($this->session->flashdata('msg')){ ?>
@@ -14,39 +14,7 @@
 		</div>
 	<?php } ?>
 
-    <!-- start untuk modal tambah data -->
-	<div class="modal fade" id="tambahdata" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<form action="<?= base_url('admin/tambah_jadwal') ?>" method="post">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Tambah Jadwal</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						  <span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<label>Jadwal</label>
-							<input class="form-control" type="text" name="jadwal" required>
-						</div>
-						<div class="form-group">
-							<label>Status</label>
-							<select name="status" class="form-control">
-								<option value="1">Aktif</option>
-								<option value="2">Tidak Aktif</option>
-							</select>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-						<input type="Submit" class="btn btn-primary" value="Simpan">
-					</div>
-				</div>
-			</div>
-		</form>
-	</div>
-	<!-- end untuk modal tambah data -->
+
 
 	<div class="card-body">
 	    <div class="table-responsive">
@@ -76,7 +44,7 @@
 							?>
 						</td>
 						<td>
-							<a class="btn btn-primary" href="">Edit</a>
+							<a class="btn btn-primary" href="<?= base_url('admin/edit_jadwal/').$d->id ?>">Edit</a>
 							<a class="btn btn-danger" href="<?= base_url('admin/hapus_jadwal/').$d->id ?>">Hapus</a>
 						</td>
 					</tr>

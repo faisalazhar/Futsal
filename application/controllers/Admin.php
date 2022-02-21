@@ -109,17 +109,52 @@ class Admin extends CI_Controller {
 	}
 
 	public function tambah_jadwal(){
+		$this->load->view('admin/head');
+		$this->load->view('admin/sidebar');
+		$this->load->view('admin/form_tambah_jadwal');
+		$this->load->view('admin/foot');
+	}
+
+	public function edit_jadwal($id){
 		$this->load->model('Model_jadwal');
-		$jadwal 	= $this->input->post('jadwal');
+
+		// ambil satu baris data lapangan yang ingin diedit 
+		$data['jadwal'] = $this->Model_jadwal->lihat_by_id($id);
+
+		$this->load->view('admin/head');
+		$this->load->view('admin/sidebar');
+		$this->load->view('admin/form_edit_jadwal',$data);
+		$this->load->view('admin/foot');
+	}
+
+	public function simpan_jadwal(){
+		$this->load->model('Model_jadwal');
+		$nama 		= $this->input->post('nama');
 		$status 	= $this->input->post('status');
 
 		$data = array(
-			'jadwal' => $jadwal,
+			'jadwal' => $nama,
 			'status' => $status
 		);
 
 		$this->Model_jadwal->tambah_jadwal($data);
-		$this->session->set_flashdata('msg', 'Jadwal berhasil ditambah !');
+		$this->session->set_flashdata('msg', 'Data berhasil ditambah !');
+		redirect('/admin/jadwal/');
+	}
+
+	public function simpan_edit_jadwal(){
+		$this->load->model('Model_jadwal');
+		$nama 		= $this->input->post('nama');
+		$status 	= $this->input->post('status');
+		$id 		= $this->input->post('id');
+
+		$data = array(
+			'jadwal' => $nama,
+			'status' => $status
+		);
+
+		$this->Model_jadwal->edit_jadwal($id,$data);
+		$this->session->set_flashdata('msg', 'Data berhasil dupdate !');
 		redirect('/admin/jadwal/');
 	}
 }
